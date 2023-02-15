@@ -61,11 +61,52 @@ body {
   border: rgb(202, 202, 202) 1px solid;
   font-family: "Karla", sans-serif;
 }
+.div-frame {
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
 
 .img--meme {
   /*  width: 477px;*/
+  object-fit: cover;
   width: 50rem;
   height: 27rem;
+}
+
+.div--upper-text {
+  text-align: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: fit-content;
+  font-family: impact;
+  font-size: 2.5em;
+  text-transform: uppercase;
+  color: white;
+  letter-spacing: 1px;
+  text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000,
+    -2px 2px 0 #000, 0px 2px 0 #000, 2px 0px 0 #000, 0px -2px 0 #000,
+    -2px 0px 0 #000, 2px 2px 5px #000;
+}
+
+.div--bottom-text {
+  text-align: center;
+  position: absolute;
+  top: 370px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: fit-content;
+  font-family: impact;
+  font-size: 2.5em;
+  text-transform: uppercase;
+  color: white;
+  letter-spacing: 1px;
+  text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000,
+    -2px 2px 0 #000, 0px 2px 0 #000, 2px 0px 0 #000, 0px -2px 0 #000,
+    -2px 0px 0 #000, 2px 2px 5px #000;
 }
 
 .btn--newImg {
