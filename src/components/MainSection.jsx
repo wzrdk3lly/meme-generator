@@ -25,6 +25,14 @@ export default function MainSection() {
 
   let [allMemeImages, setAllMemeImages] = React.useState(memesData);
 
+  function handOnChange(event) {
+    let { value, name } = event.target;
+    setImageUrl((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  }
+
   function handleOnClick() {
     let arrayOfImages = allMemeImages.data.memes;
     let randomImageObject =
@@ -39,8 +47,18 @@ export default function MainSection() {
   return (
     <main className="main--content">
       <div className="div--input">
-        <input type="text" />
-        <input type="text" />
+        <input
+          type="text"
+          name="topText"
+          value={meme.topText}
+          onChange={handOnChange}
+        />
+        <input
+          type="text"
+          name="bottomText"
+          value={meme.bottomText}
+          onChange={handOnChange}
+        />
       </div>
       <button className={"btn--newImg"} onClick={handleOnClick}>
         Get a new meme image 🖼{" "}
@@ -50,8 +68,8 @@ export default function MainSection() {
         {meme.randomImage && (
           <img className="img--meme" src={meme.randomImage} />
         )}
-        <div className="div--upper-text">Upper Text</div>
-        <div className="div--bottom-text">Bottom Text</div>
+        <div className="div--upper-text">{meme.topText}</div>
+        <div className="div--bottom-text">{meme.bottomText}</div>
       </div>
     </main>
   );
