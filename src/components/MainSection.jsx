@@ -1,21 +1,5 @@
 import React from "react";
-import memesData from "../memesData.jsx";
-/**
- * Challenge: Update our state to save the meme-related
- * data as an object called `meme`. It should have the
- * following 3 properties:
- * topText, bottomText, randomImage.
- *
- * The 2 text states can default to empty strings for now,
- * amd randomImage should default to "http://i.imgflip.com/1bij.jpg"
- *
- * Next, create a new state variable called `allMemeImages`
- * which will default to `memesData`, which we imported above
- *
- * Lastly, update the `getMemeImage` function and the markup
- * to reflect our newly reformed state object and array in the
- * correct way.
- */
+
 export default function MainSection() {
   let [meme, setImageUrl] = React.useState({
     topText: "",
@@ -23,7 +7,13 @@ export default function MainSection() {
     randomImage: "",
   });
 
-  let [allMemeImages, setAllMemeImages] = React.useState(memesData);
+  let [allMemes, setallMemes] = React.useState("");
+  // Leaned how to use an API and fetch the data one time after an event was called
+  React.useEffect(() => {
+    fetch("https://api.imgflip.com/get_memes")
+      .then((response) => response.json())
+      .then((memeObject) => setallMemes((prevData) => memeObject.data.memes));
+  }, []);
 
   function handOnChange(event) {
     let { value, name } = event.target;
@@ -34,9 +24,9 @@ export default function MainSection() {
   }
 
   function handleOnClick() {
-    let arrayOfImages = allMemeImages.data.memes;
+    let arrayOfMemes = allMemes;
     let randomImageObject =
-      arrayOfImages[Math.floor(Math.random() * arrayOfImages.length)];
+      arrayOfMemes[Math.floor(Math.random() * arrayOfMemes.length)];
     setImageUrl((prevMeme) => {
       return {
         ...prevMeme,
